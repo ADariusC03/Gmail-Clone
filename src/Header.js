@@ -6,6 +6,7 @@ import SearchIcon from '@material-ui/icons/Search';
 import KeyboardArrowDownIcon from '@material-ui/icons/KeyboardArrowDown';
 import AppsIcon from '@material-ui/icons/Apps';
 import NotificationsIcon from '@material-ui/icons/Notifications';
+import HelpIcon from '@material-ui/icons/Help';
 
 function Header() {
     return (
@@ -27,6 +28,9 @@ function Header() {
            </div>
 
            <div className="header_right">
+                <IconButton>
+                    <HelpIcon />
+                </IconButton>
                 <IconButton>
                     <NotificationsIcon />
                 </IconButton>
