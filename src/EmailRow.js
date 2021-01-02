@@ -13,7 +13,7 @@ function EmailRow({id, title, subject, description, time}) {
 
     return (
         <div onClick={() => history.push("/mail")} className="emailRow">
-            <div class="emailRow_options">
+            <div className="emailRow_options">
                 <Checkbox />
                 <IconButton>
                     <StarBorderOutlinedIcon />
@@ -23,11 +23,11 @@ function EmailRow({id, title, subject, description, time}) {
                 </IconButton>
 
             </div>
-            <h3 class="emailRow_title">
+            <h3 className="emailRow_title">
                 {title}
             </h3>
 
-            <div class="emailRow_message">
+            <div className="emailRow_message">
                 <h4>
                     {subject}{"  "}
                     <span className="emailRow_description"> - {description}</span>

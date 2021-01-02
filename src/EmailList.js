@@ -30,7 +30,7 @@ function EmailList() {
                         <MoreVertIcon />
                     </IconButton>
                 </div>
-                <div class="emailList_settingsRight">
+                <div className="emailList_settingsRight">
                     <IconButton>
                         <ChevronLeftIcon />
                     </IconButton>
@@ -45,18 +45,26 @@ function EmailList() {
                     </IconButton>
                 </div>
             </div>
-            <div class="emailList_sections">
+            <div className="emailList_sections">
                 <Section Icon={InboxIcon} title="Primary" color="red" selected />
                 <Section Icon={PeopleIcon} title="Social" color="#1A73E8" />
                 <Section Icon={LocalOfferIcon} title="Promotions" color="green" />
 
             </div>
-            <div class="emailList_list">
+            <div className="emailList_list">
                 <EmailRow  
                     title="Amazon"
                     subject="Hey New PS5 in Stock now!!"
                     description="This is a test"
                     time="8am"
+                />
+            </div>
+            <div className="emailList_list">
+                <EmailRow  
+                    title="Redux"
+                    subject="Hey New User Come Program now!!"
+                    description="This is a test test test"
+                    time="3pm"
                 />
             </div>
         </div>

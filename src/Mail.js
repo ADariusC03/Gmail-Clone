@@ -20,8 +20,8 @@ function Mail() {
 
     return (
         <div className="mail">
-            <div class="mail_tools">
-                <div class="mail_toolsLeft">
+            <div className="mail_tools">
+                <div className="mail_toolsLeft">
                 <IconButton onClick={() => history.push("/")}>
                     <ArrowBackIcon/>    
                 </IconButton>
@@ -52,7 +52,7 @@ function Mail() {
 
                 </div>
 
-                <div class="mail_toolsRight">
+                <div className="mail_toolsRight">
                 <IconButton>
                     <UnfoldMoreIcon />    
                 </IconButton>
@@ -64,8 +64,8 @@ function Mail() {
                 </IconButton>
                 </div>
             </div>
-            <div class="mail_body">
-                <div class="mail_bodyHeader">
+            <div className="mail_body">
+                <div className="mail_bodyHeader">
                     <h2>Subject</h2>
                     <LabelImportantIcon className="mail_important" />
                     <p>Title</p>
@@ -73,7 +73,7 @@ function Mail() {
                     <p className="mail_time">3pm</p>
                 </div>
 
-                <div class="mail_message"><p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Laudantium accusantium at deserunt blanditiis odit. Quis placeat facilis nulla, expedita minus asperiores eaque. Praesentium deserunt in possimus inventore hic ex minima.</p></div>
+                <div className="mail_message"><p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Laudantium accusantium at deserunt blanditiis odit. Quis placeat facilis nulla, expedita minus asperiores eaque. Praesentium deserunt in possimus inventore hic ex minima.</p></div>
             </div>
         </div>
     );

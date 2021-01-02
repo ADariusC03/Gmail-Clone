@@ -13,11 +13,15 @@ import SidebarOption from './SidebarOption';
 import PersonIcon from '@material-ui/icons/Person';
 import DuoIcon from '@material-ui/icons/Duo';
 import PhoneIcon from '@material-ui/icons/Phone';
+import { red } from '@material-ui/core/colors';
+import { useDispatch } from 'react-redux';
+import { openSendMessage } from './features/mailSlice';
 
 function Sidebar() {
+    const dispatch = useDispatch();
     return (
         <div className="sidebar">
-            <Button startIcon={<AddIcon fontsize="large" />} className="sidebar_compose" >Compose</Button>
+            <Button startIcon={<AddIcon fontsize="large" style={{ color: red[500] }} />} className="sidebar_compose" onClick={() => dispatch(openSendMessage())} >Compose</Button>
             
             <SidebarOption Icon={InboxIcon} title="Inbox" number={15}  selected={true} />
             <SidebarOption Icon={StarIcon} title="Starred" number={15} />
@@ -27,8 +31,8 @@ function Sidebar() {
             <SidebarOption Icon={NoteIcon} title="Drafts" number={15} />
             <SidebarOption Icon={ExpandMoreIcon} title="Categories" number={15} />
 
-            <div class="sidebar_footer">
-                <div class="sidebar_footerIcons">
+            <div className="sidebar_footer">
+                <div className="sidebar_footerIcons">
                     <IconButton>
                         <PersonIcon />
                     </IconButton>
@@ -45,4 +49,5 @@ function Sidebar() {
 }
 
 //Sidebar is the side of the page in Gmail
+// clicking on the compose button, its will open up the new message tab
 export default Sidebar
