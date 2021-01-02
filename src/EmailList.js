@@ -1,5 +1,5 @@
 import { Checkbox, IconButton } from '@material-ui/core';
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import './EmailList.css';
 import ArrowDropDownIcon from '@material-ui/icons/ArrowDropDown';
 import RedoIcon from '@material-ui/icons/Redo';
@@ -13,8 +13,24 @@ import Section from './Section';
 import PeopleIcon from '@material-ui/icons/People';
 import LocalOfferIcon from '@material-ui/icons/LocalOffer';
 import EmailRow from './EmailRow';
+import { db } from './firebase';
 
 function EmailList() {
+    // creating a piece of state to keep variables in react
+    // mapping it to the db in firebase with useEffecct 
+    const [mail, setMail] = useState([]);
+
+    useEffect(() => {
+        db.collection("mail").orderBy("timestamp", "desc").onSnapshot((snapshot) =>
+        setMail(
+            snapshot.docs.map((doc) => ({
+                id: doc.id,
+                data: doc.data(),
+            }))
+            )
+        );
+    }, []);
+
     return (
         <div className="emailList">
             <div className="emailList_settings">
@@ -52,6 +68,18 @@ function EmailList() {
 
             </div>
             <div className="emailList_list">
+                {mail.map(({id, data: {to, subject, message, timestamp}}) => (
+                    <EmailRow 
+                    id={id}
+                    key={id}
+                    title={to}
+                    subject={subject}
+                    description={message}
+                    time={new Date(timestamp?.seconds * 1000).toUTCString()}
+                
+                    />
+                ))}
+
                 <EmailRow  
                     title="Amazon"
                     subject="Hey New PS5 in Stock now!!"

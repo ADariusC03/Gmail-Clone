@@ -5,12 +5,23 @@ import { Button } from '@material-ui/core';
 import { useForm } from "react-hook-form";
 import { useDispatch } from 'react-redux';
 import { closeSendMessage } from './features/mailSlice';
+import { db } from './firebase';
+import firebase from 'firebase';
 
 function SendMail() {
     const { register, handleSubmit, watch, errors } = useForm();
 
     const onSubmit = (formData) => {
      console.log(formData);
+     db.collection("mail").add(
+        {
+            to: formData.to,
+            subject: formData.subject,
+            message: formData.message,
+            timestamp: firebase.firestore.FieldValue.serverTimestamp(),
+        });
+        // after making and pushing the data, the message box will close
+        dispatch(closeSendMessage());
     };
 
     const dispatch = useDispatch();
@@ -23,7 +34,7 @@ function SendMail() {
             </div>
 
             <form onSubmit={handleSubmit(onSubmit)}>
-                <input placeholder="To" type="text" name="to" ref={register({ required: true })} />
+                <input placeholder="To" type="email" name="to" ref={register({ required: true })} />
                 {errors.to && <p className="sendMail_error">To is required!</p>}
 
                 <input placeholder="Subject" type="text" name="subject" ref={register({ required: true })} />
@@ -51,5 +62,6 @@ function SendMail() {
 // onSumbit={handleSumbit(onSumbit)} get the data of the form back, thats being input in the form(required fields)
 // error.{name of input} renders a p tag that displays whenever the field doesn't have any text inside it.
 // dispatch(closeSendMessage()) is used to exit out the messsage box 
-
+// timestamp: firebase.firestore.FieldValue.serverTimestamp() => gives the timestamp of the db server I'm using in firebase
+// db.collection("mail") : mail is the name given in the mailSlice.js
 export default SendMail
