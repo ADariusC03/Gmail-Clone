@@ -76,7 +76,6 @@ function EmailList() {
                     subject={subject}
                     description={message}
                     time={new Date(timestamp?.seconds * 1000).toUTCString()}
-                
                     />
                 ))}
 
@@ -85,16 +84,16 @@ function EmailList() {
                     subject="Hey New PS5 in Stock now!!"
                     description="This is a test"
                     time="8am"
-                />
-            </div>
-            <div className="emailList_list">
+                />{" "}
+
                 <EmailRow  
                     title="Redux"
                     subject="Hey New User Come Program now!!"
                     description="This is a test test test"
                     time="3pm"
-                />
+                />{" "}
             </div>
+            
         </div>
     )
 }
